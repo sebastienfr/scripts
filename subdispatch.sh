@@ -9,8 +9,8 @@
 #       move rejected raw (without associated jpeg) in a 'reject' folder (-reject optional)
 #
 # History :
-# 29/10/10 Creation (SFR)
-# 02/10/10 Add option -raw -mov -reject (SFR)
+# 02/10/10 Creation (SFR)
+# 29/10/10 Add option -raw -mov -reject (SFR)
 
 ############################
 # debug                    #
@@ -145,7 +145,7 @@ ismovie() {
 ############################
 # main fonctions           #
 ############################
-# dispatch files by their dates into subfilders
+# dispatch files by their dates into subfolders
 # put movies in a mov folder
 dispatch() {
 	cd "$1"
