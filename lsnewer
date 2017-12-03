@@ -1,0 +1,49 @@
+#!/bin/bash
+#
+# Script de recherche de fichier le plus recent
+#
+
+usage() {
+	echo "usage: $PROGNAME [FILE]"
+	echo "List newest file recursively in FILEs"
+	echo " -h : affiche cette aide"
+}
+
+# Initialisation des variables
+SEARCH=`pwd`
+
+# Traitement des parametres
+while [ $# -gt 0 ] ; do
+	case $1 in
+		-h) usage;;
+		*) SEARCH=$1;;
+	esac;
+	shift
+done
+
+
+listLastFile() {
+	if [ -f "$1" ] ; then 
+		echo `ls "$1"`
+	fi
+
+	if [ -d "$1" ] ; then
+		cd "$1"
+		LAST=`ls | tail -1`
+		listLastFile "$LAST"
+	fi
+
+}
+
+
+if [ -f $SEARCH  ] ; then
+	echo $SEARCH
+	exit 1	
+fi
+
+for FILE in $SEARCH/* ; do
+	listLastFile "$FILE"
+	cd "$SEARCH"
+done
+
+exit 1
